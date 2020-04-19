@@ -48,7 +48,7 @@
 
 # CONSTANTS
 
-SP_VERSION="0.1"
+SP_VERSION="0.2.0"
 SP_DEST="org.mpris.MediaPlayer2.spotify"
 SP_PATH="/org/mpris/MediaPlayer2"
 SP_MEMB="org.mpris.MediaPlayer2.Player"
@@ -233,6 +233,7 @@ alias sp-play="  sp-dbus PlayPause"
 alias sp-pause=" sp-dbus Pause"
 alias sp-next="  sp-dbus Next"
 alias sp-prev="  sp-dbus Previous"
+alias sp-previous="  sp-dbus Previous"
 
 # DISPATCHER
 
