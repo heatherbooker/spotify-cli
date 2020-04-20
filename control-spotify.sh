@@ -209,10 +209,14 @@ function sp-search {
   # Searches for tracks, plays the first result.
 
   require curl
-
+    #send request for token with ID and SecretID encoded to base64->grep take only  token from reply->trim reply down to token-> modified request to include token in header
   Q="$@"
+    ST=$(curl -H "Authorization: Basic $CREDENTIALS" -d grant_type=client_credentials https://accounts.spotify.com/api/token \
+    | grep -E -o "access_token\":\"[a-zA-Z0-9_-]+\"" -m 1 )
+
+    ST2=${ST:15:86}}
   SPTFY_URI=$( \
-    curl -s -G --data-urlencode "q=$Q" https://api.spotify.com/v1/search\?type=track \
+    curl -H "Authorization: Bearer $ST2" -s -G --data-urlencode "q=$Q" https://api.spotify.com/v1/search\?type=track \
     | grep -E -o "spotify:track:[a-zA-Z0-9]+" -m 1 \
   )
 
