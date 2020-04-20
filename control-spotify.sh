@@ -212,7 +212,7 @@ function sp-search {
   QUERY="$@"
   # $CREDENTIALS should be base64encoded(client_id:secret)
 
-  RESPONSE=$(curl -H "Authorization: Basic $CREDENTIALS" -d grant_type=client_credentials https://accounts.spotify.com/api/token \
+  RESPONSE=$(curl -H "Authorization: Basic $CREDENTIALS" -d grant_type=client_credentials https://accounts.spotify.com/api/token --silent \
     | grep -E -o "access_token\":\"[a-zA-Z0-9_-]+\"" -m 1 )
 
   TOKEN=${RESPONSE:15:86}}
